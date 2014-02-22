@@ -118,7 +118,7 @@
             // Creates uploader
             var uploader = $scope.uploader = $fileUploader.create({
                 scope: $scope,
-                url: url.package('images', 'upload', true),
+                url: url.serverPackage('images', 'upload'),
                 formData: [dataToSend]
             });
 

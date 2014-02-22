@@ -41,33 +41,33 @@
 
             $http({
 
-                url: url.package('images', 'all', true),
+                url: url.serverPackage('images', 'all'),
                 method: 'GET',
                 params: Packages.getDataToSend('images')
 
             }).success(function (data) {
 
-                    $scope.images = data;
+                $scope.images = data;
 
-                }).error(function (data) {
-                    Alert.error('From images package', 'Something went wrong while trying to fetch the images for this element');
-                });
+            }).error(function (data) {
+                Alert.error('From images package', 'Something went wrong while trying to fetch the images for this element');
+            });
         });
 
         $scope.removeImage = function(index) {
 
             $http({
-                url: url.package('images', 'one/' + $scope.images[index].id, true),
+                url: url.serverPackage('images', 'one/' + $scope.images[index].id),
                 method: 'DELETE'
             }).success(function (data) {
 
-                    Alert.success('From images package', 'Image deleted successfully.');
+                Alert.success('From images package', 'Image deleted successfully.');
 
-                    $scope.images.splice(index, 1);
+                $scope.images.splice(index, 1);
 
-                }).error(function (data) {
-                    Alert.error('From images package', 'Somethine went wrong while trying to delete this image.');
-                })
+            }).error(function (data) {
+                Alert.error('From images package', 'Somethine went wrong while trying to delete this image.');
+            });
         }
     }
 
